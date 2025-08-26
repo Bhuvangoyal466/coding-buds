@@ -1,54 +1,134 @@
-<div align="center">
-  
-  ![GitHub repo size](https://img.shields.io/github/repo-size/codewithsadee/eduweb)
-  ![GitHub stars](https://img.shields.io/github/stars/codewithsadee/eduweb?style=social)
-  ![GitHub forks](https://img.shields.io/github/forks/codewithsadee/eduweb?style=social)
-[![Twitter Follow](https://img.shields.io/twitter/follow/codewithsadee_?style=social)](https://twitter.com/intent/follow?screen_name=codewithsadee_)
-  [![YouTube Video Views](https://img.shields.io/youtube/views/x26bQPxcFX4?style=social)](https://youtu.be/x26bQPxcFX4)
+# Coding Buds - Fun & Personalized Coding Classes for Kids
 
-  <br />
-  <br />
+## Overview
+Expert-led 1:1 & group coding classes for kids aged 6-16. Learn Scratch, Python, Web Development & Java with personalized or collaborative learning approaches.
 
-  <h2 align="center">eduweb - Education Website</h2>
+## Key Features
+- **Personalized Learning**: 1:1 and small group classes available
+- **Age-Appropriate Courses**: Tailored curriculum for ages 6-16
+- **Interactive Projects**: Hands-on coding with real-world applications
+- **Expert Instruction**: 10+ years of global coding education experience
+- **Proven Results**: 400+ students trained, 100% parent satisfaction
 
-  EduWeb is a fully responsive education website, <br />Responsive for all devices, build using HTML, CSS, and JavaScript.
+## Course Offerings
 
-  <a href="https://codewithsadee.github.io/eduweb/"><strong>➥ Live Demo</strong></a>
+### 🎮 Scratch for Kids (Ages 6-10)
+- Visual programming basics
+- Game development
+- **Duration**: 4 weeks
+- **Level**: Beginner
 
-</div>
+### 🐍 Python for Teens (Ages 11-16)
+- Text-based programming
+- Apps, games & AI basics
+- **Duration**: 6 weeks
+- **Level**: Intermediate
 
-<br />
+### 🌐 Web Development (All Ages)
+- HTML, CSS, JavaScript
+- Website creation
+- **Duration**: 8 weeks
+- **Level**: Intermediate
 
-### Demo Screeshots
+### ☕ Java Programming
+- Object-oriented programming
+- Advanced development concepts
+- **Level**: Advanced
 
-![EduWeb Desktop Demo](./readme-images/desktop.png "Desktop Demo")
+## Technology Stack
+- **Frontend**: HTML5, CSS3, JavaScript
+- **Styling**: Custom CSS with responsive design
+- **Icons**: Ionicons
+- **Fonts**: Google Fonts (League Spartan, Poppins)
+- **Form Handling**: EmailJS integration
+
+## Project Structure
+```
+codingbuds/
+├── index.html              # Main landing page
+├── favicon.svg             # Website icon
+├── robots.txt              # SEO configuration
+├── sitemap.xml             # Site structure for search engines
+├── .htaccess               # Server configuration
+└── assets/
+    ├── css/
+    │   └── style.css       # Main stylesheet
+    ├── js/
+    │   └── script.js       # Interactive functionality
+    └── images/             # Optimized images (23 files)
+        ├── logo.png
+        ├── course images/
+        ├── hero section/
+        └── decorative shapes/
+```
+
+## Features
+
+### 📱 Responsive Design
+- Mobile-first approach
+- Optimized for all screen sizes
+- Touch-friendly interface
+
+### 🎯 SEO Optimized
+- Meta tags for search engines
+- Structured data (JSON-LD)
+- Semantic HTML structure
+- Fast loading performance
+
+### 📧 Contact Integration
+- EmailJS contact form
+- WhatsApp integration
+- Social media links
+- Newsletter subscription
+
+### 🔧 Performance Features
+- Optimized images
+- Minified CSS
+- Lazy loading
+- Preloaded critical resources
+
+## Getting Started
 
 ### Prerequisites
+- Web server (Apache/Nginx) or hosting service
+- Modern web browser
 
-Before you begin, ensure you have met the following requirements:
+### Deployment
+1. Upload all files to your web server
+2. Ensure `.htaccess` is properly configured
+3. Test contact form functionality
+4. Verify all images load correctly
 
-* [Git](https://git-scm.com/downloads "Download Git") must be installed on your operating system.
+### Local Development
+1. Clone or download the project
+2. Open `index.html` in a web browser
+3. For form testing, configure EmailJS credentials
 
-### Run Locally
+## Contact Information
+- **Phone**: +91 77175 22189
+- **Email**: codingbuds7@gmail.com
+- **WhatsApp**: [Chat with us](https://wa.me/917717522189)
 
-To run **EduWeb** locally, run this command on your git bash:
+## Social Media
+- **Instagram**: [@coding_buds](https://instagram.com/coding_buds)
+- **Facebook**: [Coding Buds](https://www.facebook.com/profile.php?id=61571017679574)
+- **LinkedIn**: [Company Page](https://www.linkedin.com/company/codingbuds/)
 
-Linux and macOS:
+## About the Founder
+**Anjali Singla** - Computer Science Engineer with:
+- 5+ years industrial experience
+- 5+ years teaching kids programming worldwide
+- 400+ students successfully trained
 
-```bash
-sudo git clone https://github.com/codewithsadee/eduweb.git
-```
+## Statistics
+- 🎓 **400+** Students Trained
+- 🚀 **50+** Projects Completed
+- ⭐ **100%** Parent Satisfaction
+- 🌍 **10+** Years of Experience
 
-Windows:
+## License
+© 2025 Coding Buds. All Rights Reserved.
 
-```bash
-git clone https://github.com/codewithsadee/eduweb.git
-```
+---
 
-### Contact
-
-If you want to contact with me you can reach me at [Twitter](https://www.twitter.com/codewithsadee).
-
-### License
-
-This project is **free to use** and does not contains any license.
+**Ready to get started?** [Book a free trial class today!](https://www.codingbuds.com/#contact)

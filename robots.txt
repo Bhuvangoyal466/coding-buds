@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# XML Sitemap
+Sitemap: https://www.codingbuds.com/sitemap.xml
+
+# Block access to admin areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+
+# Allow search engines to crawl important pages
+Allow: /assets/css/
+Allow: /assets/js/
+Allow: /assets/images/
+
+# Crawl delay (optional)
+Crawl-delay: 1
