@@ -490,10 +490,27 @@ body {
     padding-block: 8px;
     font-weight: var(--fw-500);
     transition: var(--transition-1);
+    position: relative;
+    text-decoration: none;
+}
+
+.navbar-link::after {
+    content: "";
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--kappel);
+    transition: width 0.3s ease-in-out;
 }
 
 .navbar-link:is(:hover, :focus) {
     color: var(--kappel);
+}
+
+.navbar-link:is(:hover, :focus)::after {
+    width: 100%;
 }
 
 .overlay {
