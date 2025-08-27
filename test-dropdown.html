@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Country Dropdown Test</title>
+        <link rel="stylesheet" href="./assets/css/style.css" />
+        <script
+            type="module"
+            src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+        ></script>
+        <script
+            nomodule
+            src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+        ></script>
+    </head>
+    <body style="padding: 50px; background: #f5f5f5">
+        <div style="max-width: 600px; margin: 0 auto">
+            <h2>Country Code Dropdown Test</h2>
+
+            <form id="contact-form" class="contact-form">
+                <div class="input-wrapper phone-wrapper">
+                    <div class="phone-input-container">
+                        <div class="country-code-dropdown">
+                            <div class="selected-country" id="selected-country">
+                                <img
+                                    src="https://flagcdn.com/w20/in.png"
+                                    alt="India"
+                                    class="flag-icon"
+                                />
+                                <span class="country-info">India (+91)</span>
+                                <ion-icon
+                                    name="chevron-down-outline"
+                                    class="dropdown-arrow"
+                                ></ion-icon>
+                            </div>
+                            <div class="dropdown-content" id="dropdown-content">
+                                <div class="search-box">
+                                    <input
+                                        type="text"
+                                        id="country-search"
+                                        placeholder="Search country..."
+                                        class="search-input"
+                                    />
+                                    <ion-icon
+                                        name="search-outline"
+                                        class="search-icon"
+                                    ></ion-icon>
+                                </div>
+                                <div class="countries-list" id="countries-list">
+                                    <!-- Countries will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                        <input
+                            type="tel"
+                            name="phone"
+                            placeholder="Phone Number"
+                            required
+                            class="input-field phone-input"
+                            title="Please enter your phone number"
+                            id="phone-input"
+                        />
+                    </div>
+                </div>
+
+                <button
+                    type="submit"
+                    style="
+                        padding: 15px 30px;
+                        background: #007bff;
+                        color: white;
+                        border: none;
+                        border-radius: 5px;
+                        cursor: pointer;
+                    "
+                >
+                    Test Submit
+                </button>
+            </form>
+        </div>
+
+        <script src="./assets/js/script.js"></script>
+    </body>
+</html>

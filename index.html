@@ -360,10 +360,18 @@
                             >
                         </li>
 
-                        <li class="navbar-item">
-                            <a href="#contact" class="navbar-link" data-nav-link
-                                >Contact</a
+                        <li class="navbar-item navbar-btn-item">
+                            <a
+                                href="#contact"
+                                class="navbar-link navbar-btn"
+                                data-nav-link
                             >
+                                Book a Free Trial Class
+                                <ion-icon
+                                    name="arrow-forward-outline"
+                                    aria-hidden="true"
+                                ></ion-icon>    
+                            </a>
                         </li>
                     </ul>
                 </nav>
@@ -1490,19 +1498,62 @@
                                     />
                                 </div>
 
+                                <div class="input-wrapper phone-wrapper">
+                                    <div class="phone-input-container">
+                                        <div class="country-code-dropdown">
+                                            <div
+                                                class="selected-country"
+                                                id="selected-country"
+                                            >
+                                                <img
+                                                    src="https://flagcdn.com/w20/in.png"
+                                                    alt="India"
+                                                    class="flag-icon"
+                                                />
+                                                <span class="country-info"
+                                                    >India (+91)</span
+                                                >
+                                                <ion-icon
+                                                    name="chevron-down-outline"
+                                                    class="dropdown-arrow"
+                                                ></ion-icon>
+                                            </div>
+                                            <div
+                                                class="dropdown-content"
+                                                id="dropdown-content"
+                                            >
+                                                <div class="search-box">
+                                                    <input
+                                                        type="text"
+                                                        id="country-search"
+                                                        placeholder="Search country..."
+                                                        class="search-input"
+                                                    />
+                                                    <ion-icon
+                                                        name="search-outline"
+                                                        class="search-icon"
+                                                    ></ion-icon>
+                                                </div>
+                                                <div
+                                                    class="countries-list"
+                                                    id="countries-list"
+                                                >
+                                                    <!-- Countries will be populated by JavaScript -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input
+                                            type="tel"
+                                            name="phone"
+                                            placeholder="Phone Number"
+                                            required
+                                            class="input-field phone-input"
+                                            title="Please enter your phone number"
+                                            id="phone-input"
+                                        />
+                                    </div>
+                                </div>
                                 <div class="input-wrapper">
-                                    <input
-                                        type="tel"
-                                        name="phone"
-                                        placeholder="Phone Number (10 digits)"
-                                        required
-                                        class="input-field"
-                                        pattern="[0-9]{10}"
-                                        minlength="10"
-                                        maxlength="10"
-                                        title="Please enter exactly 10 digits"
-                                        oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10)"
-                                    />
                                     <input
                                         type="number"
                                         name="child_age"

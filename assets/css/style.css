@@ -531,6 +531,42 @@ body {
 
 .navbar-list {
     padding: 15px 20px;
+    height: calc(100% - 80px); /* leaves space for sticky button */
+    overflow-y: auto; /* allow scrolling if content overflows */
+}
+
+.navbar-btn-item {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--platinum);
+}
+
+.navbar-btn {
+    background-color: var(--kappel);
+    color: var(--white) !important;
+    padding: 12px 20px;
+    border-radius: var(--radius-pill);
+    text-align: center;
+    font-weight: var(--fw-600);
+    transition: var(--transition-1);
+}
+
+.navbar-btn:hover {
+    background-color: var(--raisin-black);
+    transform: translateY(-2px);
+}
+
+@media (min-width: 768px) {
+    .navbar-btn-item {
+        display: none; /* hide on larger screens */
+    }
+
+    /* Ensure header button is visible on larger screens */
+    .header .btn {
+        display: flex;
+        padding: 10px 30px;
+        margin-inline: 20px;
+    }
 }
 
 .navbar-item:not(:last-child) {
@@ -562,6 +598,82 @@ body {
 
 .navbar-link:is(:hover, :focus)::after {
     width: 100%;
+}
+
+/* Mobile navbar button styles */
+.navbar-btn-item {
+    position: sticky; /* stick to bottom while scrolling */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 20px;
+    margin-top: auto;
+    background: #fff; /* ensure readability */
+    border-top: 1px solid var(--platinum);
+    display: block; /* visible on mobile */
+}
+
+@media (min-width: 768px) {
+    .navbar-btn-item {
+        display: none; /* Hide on larger screens */
+    }
+}
+
+.navbar-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    background: var(--gradient);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-10);
+    padding: 12px 20px;
+    margin: 0 20px;
+    max-width: calc(100% - 40px);
+    font-size: var(--fs-6);
+    font-weight: var(--fw-500);
+    text-decoration: none;
+    transition: var(--transition-1);
+    position: relative;
+    overflow: hidden;
+}
+
+.navbar-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        -90deg,
+        transparent,
+        hsla(0, 0%, 100%, 0.1),
+        transparent
+    );
+    transform: translateX(-100%);
+    transition: var(--transition-1);
+}
+
+.navbar-btn:is(:hover, :focus) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px hsla(170, 75%, 41%, 0.3);
+}
+
+.navbar-btn:is(:hover, :focus)::before {
+    transform: translateX(100%);
+}
+
+.navbar-btn .span {
+    font-weight: var(--fw-500);
+}
+
+.navbar-btn ion-icon {
+    font-size: 16px;
+    transition: var(--transition-1);
+}
+
+.navbar-btn:is(:hover, :focus) ion-icon {
+    transform: translateX(5px);
 }
 
 .overlay {
@@ -1933,16 +2045,43 @@ body {
     padding: 40px;
     border-radius: var(--radius-10);
     max-width: 100%;
-    overflow: hidden;
+    overflow: visible;
     box-sizing: border-box;
+    position: relative;
 }
 
 .input-wrapper {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 20px;
     margin-bottom: 20px;
     max-width: 100%;
-    overflow: hidden;
+    overflow: visible;
+}
+
+.input-wrapper.phone-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: stretch;
+    margin-bottom: 15px;
+}
+
+/* Ensure phone input takes full width on mobile */
+.phone-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    align-items: stretch;
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    .input-wrapper.phone-wrapper {
+        flex-direction: column;
+        gap: 15px;
+    }
 }
 
 .input-field {
@@ -2023,6 +2162,466 @@ select.input-field option:checked {
 select.input-field option[value=""] {
     color: var(--gray-web);
     font-style: italic;
+}
+
+/* Country Code Dropdown Styles */
+.phone-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    align-items: stretch;
+    position: relative;
+}
+
+.country-code-dropdown {
+    position: relative;
+    width: 100%;
+    flex-shrink: 0;
+    z-index: 100;
+}
+
+.selected-country {
+    background-color: var(--white);
+    border: 1px solid var(--platinum);
+    border-radius: var(--radius-5);
+    padding: 15px 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition-1);
+    font-size: var(--fs-6);
+    color: var(--eerie-black-1);
+    height: 54px;
+    box-sizing: border-box;
+    user-select: none;
+    position: relative;
+}
+
+.selected-country:hover {
+    border-color: var(--kappel);
+    box-shadow: 0 2px 8px var(--kappel_15);
+}
+
+.selected-country.active {
+    border-color: var(--kappel);
+    box-shadow: 0 0 0 3px var(--kappel_15);
+}
+
+.flag-icon {
+    width: 20px;
+    height: 15px;
+    object-fit: cover;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.country-info {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: var(--fw-500);
+    font-size: var(--fs-6);
+}
+
+.dropdown-arrow {
+    font-size: 16px;
+    color: var(--gray-web);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.selected-country.active .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.dropdown-content {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    right: 0;
+    background-color: var(--white);
+    border: 1px solid var(--platinum);
+    border-radius: var(--radius-5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    z-index: 1001;
+    max-height: 300px;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.dropdown-content.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.search-box {
+    position: relative;
+    padding: 12px;
+    border-bottom: 1px solid var(--platinum);
+    background-color: var(--white);
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 35px 10px 12px;
+    border: 1px solid var(--platinum);
+    border-radius: var(--radius-5);
+    font-size: var(--fs-7);
+    outline: none;
+    transition: var(--transition-1);
+    box-sizing: border-box;
+    background-color: var(--white);
+}
+
+.search-input:focus {
+    border-color: var(--kappel);
+    box-shadow: 0 0 0 2px var(--kappel_15);
+}
+
+.search-icon {
+    position: absolute;
+    right: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gray-web);
+    font-size: 16px;
+    pointer-events: none;
+}
+
+.countries-list {
+    max-height: 250px;
+    overflow-y: auto;
+    background-color: var(--white);
+}
+
+.country-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    cursor: pointer;
+    transition: var(--transition-1);
+    border-bottom: 1px solid var(--isabelline);
+    background-color: var(--white);
+}
+
+.country-option:last-child {
+    border-bottom: none;
+}
+
+.country-option:hover {
+    background-color: var(--isabelline);
+}
+
+.country-option.selected {
+    background-color: var(--kappel_15);
+    color: var(--kappel);
+}
+
+.country-option .flag-icon {
+    width: 20px;
+    height: 15px;
+    object-fit: cover;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.country-name {
+    flex: 1;
+    font-weight: var(--fw-500);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: var(--fs-6);
+}
+
+.country-code {
+    color: var(--gray-web);
+    font-size: var(--fs-7);
+    font-weight: var(--fw-600);
+    flex-shrink: 0;
+}
+
+.phone-input {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+/* Ensure contact section allows dropdown overflow */
+.contact {
+    overflow: visible;
+}
+
+.contact .container {
+    overflow: visible;
+}
+
+.contact-wrapper {
+    overflow: visible;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .contact-form {
+        padding: 25px;
+        margin: 0 10px;
+    }
+
+    .phone-input-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .country-code-dropdown {
+        min-width: 100%;
+        max-width: 100%;
+    }
+
+    .input-wrapper {
+        gap: 15px;
+        margin-bottom: 15px;
+    }
+
+    .input-wrapper.phone-wrapper {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .dropdown-content {
+        max-height: 250px;
+    }
+
+    .input-field {
+        padding: 12px 15px;
+        font-size: var(--fs-6);
+    }
+
+    .selected-country {
+        padding: 12px 15px;
+        font-size: var(--fs-6);
+    }
+}
+
+@media (max-width: 576px) {
+    .contact-form {
+        padding: 20px;
+        margin: 0 5px;
+        border-radius: var(--radius-5);
+    }
+
+    .input-wrapper {
+        gap: 12px;
+        margin-bottom: 12px;
+    }
+
+    .input-field {
+        padding: 12px 15px;
+        font-size: var(--fs-6);
+        border-radius: var(--radius-5);
+    }
+
+    .selected-country {
+        padding: 12px 10px;
+        font-size: var(--fs-6);
+        gap: 6px;
+        border-radius: var(--radius-5);
+    }
+
+    .country-info {
+        font-size: var(--fs-6);
+    }
+
+    .country-option {
+        padding: 10px 12px;
+        gap: 10px;
+    }
+
+    .country-name {
+        font-size: var(--fs-6);
+    }
+
+    .country-code {
+        font-size: var(--fs-7);
+    }
+
+    .search-input {
+        padding: 8px 30px 8px 10px;
+        font-size: var(--fs-6);
+        border-radius: var(--radius-5);
+    }
+
+    .dropdown-content {
+        max-height: 200px;
+        border-radius: var(--radius-5);
+    }
+
+    .search-box {
+        padding: 10px;
+    }
+
+    textarea.input-field {
+        min-height: 100px;
+        resize: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-form {
+        padding: 15px;
+        margin: 0;
+    }
+
+    .input-wrapper {
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    .input-field {
+        padding: 10px 12px;
+        font-size: var(--fs-7);
+        border-radius: var(--radius-5);
+    }
+
+    .selected-country {
+        padding: 10px 8px;
+        font-size: var(--fs-7);
+        gap: 5px;
+        height: 46px;
+    }
+
+    .country-info {
+        font-size: var(--fs-7);
+    }
+
+    .flag-icon {
+        width: 18px;
+        height: 13px;
+    }
+
+    .dropdown-arrow {
+        font-size: 14px;
+    }
+
+    .country-option {
+        padding: 8px 10px;
+        gap: 8px;
+    }
+
+    .country-name {
+        font-size: var(--fs-7);
+    }
+
+    .country-code {
+        font-size: 12px;
+    }
+
+    .search-input {
+        padding: 8px 25px 8px 8px;
+        font-size: var(--fs-7);
+    }
+
+    .search-icon {
+        right: 18px;
+        font-size: 14px;
+    }
+
+    .dropdown-content {
+        max-height: 180px;
+    }
+
+    .search-box {
+        padding: 8px;
+    }
+
+    textarea.input-field {
+        min-height: 80px;
+        font-size: var(--fs-7);
+    }
+
+    .btn {
+        padding: 12px 20px;
+        font-size: var(--fs-7);
+    }
+}
+
+@media (max-width: 375px) {
+    .contact-form {
+        padding: 12px;
+    }
+
+    .input-field {
+        padding: 8px 10px;
+        font-size: var(--fs-7);
+    }
+
+    .selected-country {
+        padding: 8px 6px;
+        font-size: 12px;
+        height: 42px;
+        gap: 4px;
+    }
+
+    .country-info {
+        font-size: 12px;
+    }
+
+    .flag-icon {
+        width: 16px;
+        height: 12px;
+    }
+
+    .dropdown-arrow {
+        font-size: 12px;
+    }
+
+    .country-option {
+        padding: 6px 8px;
+        gap: 6px;
+    }
+
+    .country-name {
+        font-size: 12px;
+    }
+
+    .country-code {
+        font-size: 11px;
+    }
+
+    .search-input {
+        padding: 6px 22px 6px 6px;
+        font-size: 12px;
+    }
+
+    .search-icon {
+        right: 14px;
+        font-size: 12px;
+    }
+
+    .dropdown-content {
+        max-height: 150px;
+    }
+
+    .search-box {
+        padding: 6px;
+    }
+
+    textarea.input-field {
+        min-height: 70px;
+        font-size: 12px;
+    }
+
+    .btn {
+        padding: 10px 16px;
+        font-size: 12px;
+    }
 }
 
 /* Custom Alert Styles */
