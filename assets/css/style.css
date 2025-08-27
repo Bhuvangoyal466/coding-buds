@@ -207,6 +207,7 @@ html {
     transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
         transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: opacity, transform;
+    min-height: 100px; /* Reserve space for fade-in sections to reduce CLS */
 }
 
 .section.visible,
@@ -280,6 +281,7 @@ body {
     padding-block: var(--section-padding);
     position: relative;
     overflow: hidden;
+    min-height: 300px; /* Reserve space for sections to reduce CLS */
 }
 
 .shape {
@@ -502,6 +504,7 @@ body {
     height: 100%;
     z-index: 2;
     transition: 0.25s var(--cubic-in);
+    will-change: transform;
 }
 
 .navbar.active {
