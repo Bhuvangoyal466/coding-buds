@@ -244,6 +244,15 @@ function initEmailJS() {
                 return false;
             }
 
+            // Validate hCaptcha
+            const hcaptchaResponse = document.querySelector(
+                "[name=h-captcha-response]"
+            )?.value;
+            if (!hcaptchaResponse) {
+                showAlert("Please complete the captcha verification.", "error");
+                return false;
+            }
+
             const submitBtn = document.getElementById("submit-btn");
             const originalText = submitBtn.querySelector(".span").textContent;
 
@@ -271,36 +280,45 @@ function initEmailJS() {
                 child_age: formData.get("child_age"),
                 course: formData.get("course_interest"),
                 message: formData.get("message"),
+                hcaptcha_token: hcaptchaResponse, // Include hCaptcha token for server-side verification
                 to_email: "codingbuds7@gmail.com",
             };
 
             // Send email using EmailJS
-            emailjs
-                .send("service_xfs65vr", "template_r7wsth7", templateParams)
-                .then(
-                    function (response) {
-                        // Success
-                        console.log("SUCCESS!", response.status, response.text);
-
-                        // Show success alert
+            // Send to backend instead of directly to EmailJS
+            fetch("/api/verify-captcha", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(templateParams), // includes hcaptcha_token
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data.success) {
                         showAlert(
                             "Thank you! Your query has been received. We will contact you shortly.",
                             "success"
                         );
 
-                        // Reset form
+                        // Reset form + captcha
                         document.getElementById("contact-form").reset();
-                    },
-                    function (error) {
-                        // Error
-                        console.log("FAILED...", error);
+                        if (typeof hcaptcha !== "undefined") {
+                            hcaptcha.reset();
+                        }
+                    } else {
                         showAlert(
-                            "Sorry, there was an error sending your message. Please try again or contact us directly.",
+                            "Captcha verification failed. Please try again.",
                             "error"
                         );
                     }
-                )
-                .finally(function () {
+                })
+                .catch((err) => {
+                    console.error("Error:", err);
+                    showAlert(
+                        "Something went wrong. Please try again later.",
+                        "error"
+                    );
+                })
+                .finally(() => {
                     // Reset button state
                     submitBtn.querySelector(".span").textContent = originalText;
                     submitBtn.disabled = false;

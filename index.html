@@ -282,6 +282,9 @@
             async
             src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"
         ></script>
+
+        <!-- hCaptcha Script -->
+        <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
     </head>
 
     <body id="top">
@@ -370,7 +373,7 @@
                                 <ion-icon
                                     name="arrow-forward-outline"
                                     aria-hidden="true"
-                                ></ion-icon>    
+                                ></ion-icon>
                             </a>
                         </li>
                     </ul>
@@ -1601,6 +1604,19 @@
                                         box-sizing: border-box;
                                     "
                                 ></textarea>
+
+                                <!-- hCaptcha Widget -->
+                                <div
+                                    class="input-wrapper"
+                                    style="margin-bottom: 20px"
+                                >
+                                    <div
+                                        class="h-captcha"
+                                        data-sitekey="6e54089e-a6ee-4cc0-90c0-59e8b5d8460e"
+                                        data-theme="light"
+                                        data-size="normal"
+                                    ></div>
+                                </div>
 
                                 <button
                                     type="submit"
