@@ -131,11 +131,8 @@ function initEmailJS() {
                 name: formData.get("name"),
                 Email: formData.get("email"),
                 Phone: fullPhone,
-                country_code: emailCountryCode,
-                child_age: formData.get("child_age"),
                 course: formData.get("course_interest"),
                 message: formData.get("message"),
-                to_email: "codingbuds7@gmail.com",
             };
 
             // Step 1: Verify captcha with backend
@@ -154,10 +151,10 @@ function initEmailJS() {
                         // Step 2: Send email with EmailJS (frontend)
                         emailjs
                             .send(
-                                "YOUR_SERVICE_ID", // replace with EmailJS service ID
-                                "YOUR_TEMPLATE_ID", // replace with EmailJS template ID
+                                "service_xfs65vr", // replace with EmailJS service ID
+                                "template_r7wsth7", // replace with EmailJS template ID
                                 templateParams,
-                                "YOUR_PUBLIC_KEY" // replace with EmailJS Public Key
+                                "ykE6MPiOGmJw2EFzy" // replace with EmailJS Public Key
                             )
                             .then(() => {
                                 showAlert(
