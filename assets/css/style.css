@@ -9,7 +9,7 @@
     opacity: 1;
     transform: none;
 }
-}
+
 /*-----------------------------------*\
   #style.css - Coding Buds
 \*-----------------------------------*/
@@ -200,14 +200,17 @@ html {
   #SMOOTH SCROLL & SECTION ANIMATIONS
 \*-----------------------------------*/
 
-.section, .fade-in-section {
+.section,
+.fade-in-section {
     opacity: 0;
     transform: translateY(40px);
-    transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: opacity, transform;
 }
 
-.section.visible, .fade-in-section.visible {
+.section.visible,
+.fade-in-section.visible {
     opacity: 1;
     transform: none;
 }
@@ -216,7 +219,8 @@ html {
 .fade-in-up {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+    transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .fade-in-up.visible {
     opacity: 1;
