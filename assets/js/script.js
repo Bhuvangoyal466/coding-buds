@@ -365,6 +365,8 @@ function initStatsCounter() {
  * Initialize all functionality when DOM is loaded
  */
 document.addEventListener("DOMContentLoaded", function () {
+    // Remove .no-js from <html> if JS is enabled
+    document.documentElement.classList.remove("no-js");
     // Initialize Google Analytics if the script is loaded
     if (window.gtag) {
         initGoogleAnalytics();
@@ -383,6 +385,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Initialize stats counter animation
     initStatsCounter();
+
+    // Initialize smooth scroll and section fade-in animations
+    initSmoothScrollAndSectionAnimations();
 });
 
 /**
@@ -408,6 +413,59 @@ function initFAQ() {
 
             // Toggle current card
             card.classList.toggle("active");
+        });
+    });
+}
+
+/**
+ * Smooth scroll and section fade-in/slide-in animation
+ */
+function initSmoothScrollAndSectionAnimations() {
+    // Add .fade-in-section to all .section elements for animation
+    document.querySelectorAll(".section").forEach((section) => {
+        section.classList.add("fade-in-section");
+    });
+
+    // Intersection Observer for fade-in/slide-in
+    const observer = new window.IntersectionObserver(
+        (entries, obs) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    obs.unobserve(entry.target);
+                }
+            });
+        },
+        {
+            threshold: 0.15,
+        }
+    );
+
+    // Only add fade-in-up to grid-list children that are visible elements (not script, style, etc.)
+    document
+        .querySelectorAll(".grid-list > li, .grid-list > div")
+        .forEach((item) => {
+            item.classList.add("fade-in-up");
+            observer.observe(item);
+        });
+
+    // Also observe fade-in-section elements
+    document.querySelectorAll(".fade-in-section").forEach((el) => {
+        observer.observe(el);
+    });
+
+    // Enhance anchor link smooth scroll for browsers that need JS
+    document.documentElement.classList.add("smooth-scroll");
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener("click", function (e) {
+            const targetId = this.getAttribute("href").slice(1);
+            if (targetId && document.getElementById(targetId)) {
+                e.preventDefault();
+                const target = document.getElementById(targetId);
+                target.scrollIntoView({ behavior: "smooth", block: "start" });
+                // Optionally update URL hash
+                history.pushState(null, "", "#" + targetId);
+            }
         });
     });
 }
