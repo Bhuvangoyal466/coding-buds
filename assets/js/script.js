@@ -104,15 +104,6 @@ function initEmailJS() {
             // ...
             // (keeping your phone validation code as is)
 
-            // Validate hCaptcha
-            const hcaptchaResponse = document.querySelector(
-                "[name=h-captcha-response]"
-            )?.value;
-            if (!hcaptchaResponse) {
-                showAlert("Please complete the captcha verification.", "error");
-                return false;
-            }
-
             const submitBtn = document.getElementById("submit-btn");
             const originalText = submitBtn.querySelector(".span").textContent;
 
@@ -135,55 +126,29 @@ function initEmailJS() {
                 message: formData.get("message"),
             };
 
-            // Step 1: Verify captcha with backend
-            fetch("/api/verify-captcha", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ hcaptcha_token: hcaptchaResponse }),
-            })
-                .then((res) => res.json())
-                .then((data) => {
-                    if (data.success) {
-                        // console.log(
-                        //     "✅ Captcha verified, now sending email..."
-                        // );
-
-                        // Step 2: Send email with EmailJS (frontend)
-                        emailjs
-                            .send(
-                                "service_xfs65vr", // replace with EmailJS service ID
-                                "template_r7wsth7", // replace with EmailJS template ID
-                                templateParams,
-                                "ykE6MPiOGmJw2EFzy" // replace with EmailJS Public Key
-                            )
-                            .then(() => {
-                                showAlert(
-                                    "Thank you! Your query has been received. We will contact you shortly.",
-                                    "success"
-                                );
-                                document.getElementById("contact-form").reset();
-                                if (typeof hcaptcha !== "undefined") {
-                                    hcaptcha.reset();
-                                }
-                            })
-                            .catch((err) => {
-                                console.error("EmailJS error:", err);
-                                showAlert(
-                                    "Email sending failed. Please try again later.",
-                                    "error"
-                                );
-                            });
-                    } else {
-                        showAlert(
-                            "Captcha verification failed. Please try again.",
-                            "error"
-                        );
+            // Send email with EmailJS directly (no backend verification)
+            emailjs
+                .send(
+                    "service_xfs65vr", // replace with EmailJS service ID
+                    "template_r7wsth7", // replace with EmailJS template ID
+                    templateParams,
+                    "ykE6MPiOGmJw2EFzy" // replace with EmailJS Public Key
+                )
+                .then(() => {
+                    showAlert(
+                        "Thank you! Your query has been received. We will contact you shortly.",
+                        "success"
+                    );
+                    document.getElementById("contact-form").reset();
+                    // Reset hCaptcha (optional - just for visual reset)
+                    if (typeof hcaptcha !== "undefined") {
+                        hcaptcha.reset();
                     }
                 })
                 .catch((err) => {
-                    console.error("Captcha check error:", err);
+                    console.error("EmailJS error:", err);
                     showAlert(
-                        "Something went wrong. Please try again later.",
+                        "Email sending failed. Please try again later.",
                         "error"
                     );
                 })
