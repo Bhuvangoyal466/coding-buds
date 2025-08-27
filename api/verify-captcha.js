@@ -26,7 +26,7 @@ export default async function handler(req, res) {
         });
 
         const captchaResult = await captchaResponse.json();
-        console.log("🔹 hCaptcha verification result:", captchaResult);
+        // console.log("🔹 hCaptcha verification result:", captchaResult);
 
         if (captchaResult.success) {
             return res.status(200).json({ success: true });

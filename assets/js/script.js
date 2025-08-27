@@ -98,7 +98,7 @@ function initEmailJS() {
             event.stopPropagation();
             event.stopImmediatePropagation();
 
-            console.log("Form submission started");
+            // console.log("Form submission started");
 
             // All your phone validation logic remains untouched
             // ...
@@ -144,9 +144,9 @@ function initEmailJS() {
                 .then((res) => res.json())
                 .then((data) => {
                     if (data.success) {
-                        console.log(
-                            "✅ Captcha verified, now sending email..."
-                        );
+                        // console.log(
+                        //     "✅ Captcha verified, now sending email..."
+                        // );
 
                         // Step 2: Send email with EmailJS (frontend)
                         emailjs
@@ -713,13 +713,13 @@ function initCountryDropdown() {
         const countriesList = document.getElementById("countries-list");
         const countrySearch = document.getElementById("country-search");
 
-        console.log("Initializing country dropdown...");
-        console.log("Elements found:", {
-            selectedCountryEl: !!selectedCountryEl,
-            dropdownContent: !!dropdownContent,
-            countriesList: !!countriesList,
-            countrySearch: !!countrySearch,
-        });
+        // console.log("Initializing country dropdown...");
+        // console.log("Elements found:", {
+        //     selectedCountryEl: !!selectedCountryEl,
+        //     dropdownContent: !!dropdownContent,
+        //     countriesList: !!countriesList,
+        //     countrySearch: !!countrySearch,
+        // });
 
         if (
             !selectedCountryEl ||
@@ -849,16 +849,16 @@ function initCountryDropdown() {
             const phoneInput = document.getElementById("phone-input");
             if (phoneInput && !phoneInput.dataset.handlerAdded) {
                 phoneInput.addEventListener("input", function () {
-                    console.log(
-                        "Phone input changed, original value:",
-                        this.value
-                    );
+                    // console.log(
+                    //     "Phone input changed, original value:",
+                    //     this.value
+                    // );
                     const expectedLength =
                         parseInt(this.dataset.expectedLength) || 10;
                     const newValue = this.value
                         .replace(/[^0-9]/g, "")
                         .slice(0, expectedLength);
-                    console.log("Phone input after filtering:", newValue);
+                    // console.log("Phone input after filtering:", newValue);
                     this.value = newValue;
                 });
                 phoneInput.dataset.handlerAdded = "true";
@@ -867,7 +867,7 @@ function initCountryDropdown() {
 
         // Open dropdown
         function openDropdown() {
-            console.log("Opening dropdown...");
+            // console.log("Opening dropdown...");
             dropdownContent.classList.add("show");
             selectedCountryEl.classList.add("active");
             setTimeout(() => countrySearch.focus(), 100);
@@ -876,7 +876,7 @@ function initCountryDropdown() {
 
         // Close dropdown
         function closeDropdown() {
-            console.log("Closing dropdown...");
+            // console.log("Closing dropdown...");
             dropdownContent.classList.remove("show");
             selectedCountryEl.classList.remove("active");
             countrySearch.value = "";
@@ -907,7 +907,7 @@ function initCountryDropdown() {
         selectedCountryEl.addEventListener("click", (e) => {
             e.preventDefault();
             e.stopPropagation();
-            console.log("Country selector clicked");
+            // console.log("Country selector clicked");
             if (dropdownContent.classList.contains("show")) {
                 closeDropdown();
             } else {
@@ -934,9 +934,9 @@ function initCountryDropdown() {
         initPhoneInputHandler(); // Initialize phone input handler only once
 
         // Debug: Log the selected country
-        console.log("Country dropdown initialized with:", selectedCountry);
+        // console.log("Country dropdown initialized with:", selectedCountry);
 
-        console.log("Country dropdown initialized successfully");
+        // console.log("Country dropdown initialized successfully");
     }, 100);
 }
 
