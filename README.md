@@ -1,38 +1,39 @@
 # Coding Buds - Fun & Personalized Coding Classes for Kids
 
 ## Overview
-Expert-led 1:1 & group coding classes for kids aged 6-16. Learn Scratch, Python, Web Development & Java with personalized or collaborative learning approaches.
+Expert-led 1:1 & group coding classes for kids and teens aged 6-16. Choose personalized or collaborative learning. Learn Scratch, Python, Web Development & Java. 600+ students trained, 100% parent satisfaction.
 
 ## Key Features
 - **Personalized Learning**: 1:1 and small group classes available
 - **Age-Appropriate Courses**: Tailored curriculum for ages 6-16
 - **Interactive Projects**: Hands-on coding with real-world applications
 - **Expert Instruction**: 10+ years of global coding education experience
-- **Proven Results**: 400+ students trained, 100% parent satisfaction
+- **Proven Results**: 600+ students trained, 100% parent satisfaction
 
 ## Course Offerings
 
+
 ### 🎮 Scratch for Kids (Ages 6-10)
 - Visual programming basics
-- Game development
+- Game & animation development with blocks
 - **Duration**: 4 weeks
 - **Level**: Beginner
 
-### 🐍 Python for Teens (Ages 11-16)
+### 🐍 Python for Teens (Ages 8-16)
 - Text-based programming
-- Apps, games & AI basics
+- Apps, mini-games & AI basics
 - **Duration**: 6 weeks
 - **Level**: Intermediate
 
 ### 🌐 Web Development (All Ages)
 - HTML, CSS, JavaScript
-- Website creation
+- Build personal websites, portfolios & interactive web apps
 - **Duration**: 8 weeks
 - **Level**: Intermediate
 
 ### ☕ Java Programming
 - Object-oriented programming
-- Advanced development concepts
+- Logic building for higher computer science studies
 - **Level**: Advanced
 
 ## Technology Stack
@@ -55,11 +56,7 @@ codingbuds/
     │   └── style.css       # Main stylesheet
     ├── js/
     │   └── script.js       # Interactive functionality
-    └── images/             # Optimized images (23 files)
-        ├── logo.png
-        ├── course images/
-        ├── hero section/
-        └── decorative shapes/
+    └── images/             # Optimized images (course, hero, shapes, etc.)
 ```
 
 ## Features
@@ -73,6 +70,8 @@ codingbuds/
 - Meta tags for search engines
 - Structured data (JSON-LD)
 - Semantic HTML structure
+- OpenGraph & Twitter Card tags
+- Canonical URL
 - Fast loading performance
 
 ### 📧 Contact Integration
@@ -85,7 +84,7 @@ codingbuds/
 - Optimized images
 - Minified CSS
 - Lazy loading
-- Preloaded critical resources
+- Preloaded critical resources (CSS, images, fonts)
 
 ## Getting Started
 
@@ -121,8 +120,8 @@ codingbuds/
 - 400+ students successfully trained
 
 ## Statistics
-- 🎓 **400+** Students Trained
-- 🚀 **50+** Projects Completed
+- 🎓 **600+** Students Trained
+- 🚀 **200+** Projects Completed
 - ⭐ **100%** Parent Satisfaction
 - 🌍 **10+** Years of Experience
 
