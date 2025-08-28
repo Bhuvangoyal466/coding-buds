@@ -140,10 +140,7 @@ function initEmailJS() {
                         "success"
                     );
                     document.getElementById("contact-form").reset();
-                    // Reset hCaptcha (optional - just for visual reset)
-                    if (typeof hcaptcha !== "undefined") {
-                        hcaptcha.reset();
-                    }
+                    
                 })
                 .catch((err) => {
                     console.error("EmailJS error:", err);
