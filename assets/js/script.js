@@ -942,7 +942,7 @@ const blogContent = {
             <p>As children progress, they can create more complex projects like maze games, storytelling adventures, and even simple simulations. The beauty of Scratch lies in its ability to grow with the learner.</p>
             
             <h4>Building Confidence Through Creation</h4>
-            <p>Every project in Scratch is an opportunity for children to see their ideas come to life. This immediate feedback loop builds confidence and encourages experimentation. Kids learn that making mistakes is part of the learning process and that debugging is a valuable skill.</p>
+            <p style="margin-bottom: 1rem;">Every project in Scratch is an opportunity for children to see their ideas come to life. This immediate feedback loop builds confidence and encourages experimentation. Kids learn that making mistakes is part of the learning process and that debugging is a valuable skill.</p>
         `,
     },
     python: {
@@ -974,7 +974,7 @@ const blogContent = {
             <h4>Extensive Learning Resources and Community</h4>
             <p>Python has one of the most welcoming and supportive communities in programming. Thousands of tutorials, libraries, and projects are available for free, ensuring your child always has resources to explore new interests and challenges.</p>
             
-            <p>The language's versatility means that whether your child is interested in game development, web design, data science, or artificial intelligence, Python can accommodate their interests and grow with their ambitions.</p>
+            <p style="margin-bottom: 1rem;">The language's versatility means that whether your child is interested in game development, web design, data science, or artificial intelligence, Python can accommodate their interests and grow with their ambitions.</p>
         `,
     },
     "web-dev": {
@@ -1011,7 +1011,7 @@ const blogContent = {
             <h4>Career Opportunities in Web Development</h4>
             <p>Web development offers incredible career flexibility. You can work as a freelancer, join a startup, work for a large corporation, or even start your own web development business. The demand for skilled web developers continues to grow as more businesses move online.</p>
             
-            <p>Plus, web development skills are transferable to mobile app development, desktop applications, and even emerging technologies like progressive web apps (PWAs) that blur the line between websites and native mobile apps.</p>
+            <p style="margin-bottom: 1rem;">Plus, web development skills are transferable to mobile app development, desktop applications, and even emerging technologies like progressive web apps (PWAs) that blur the line between websites and native mobile apps.</p>
         `,
     },
     java: {
@@ -1045,7 +1045,7 @@ const blogContent = {
             <h4>Excellent Learning Resources and Career Paths</h4>
             <p>Java has extensive documentation, tutorials, and learning resources. The language's maturity means there are established best practices and clear career progression paths. From junior developer to software architect, Java provides a solid foundation for long-term career growth.</p>
             
-            <p>Universities worldwide use Java in computer science curricula, making it an excellent choice for students planning to pursue formal computer science education.</p>
+            <p style="margin-bottom: 1rem;">Universities worldwide use Java in computer science curricula, making it an excellent choice for students planning to pursue formal computer science education.</p>
         `,
     },
     benefits: {
@@ -1088,7 +1088,7 @@ const blogContent = {
             <p>Programming teaches children that mistakes are learning opportunities. The iterative process of coding, testing, and debugging builds resilience and persistence. Children learn to approach challenges with confidence, knowing they can find solutions through systematic thinking.</p>
             
             <h4>Collaborative Skills and Communication</h4>
-            <p>Modern programming often involves teamwork. Children learn to communicate their ideas clearly, work collaboratively on projects, and give and receive constructive feedback. These soft skills are valuable in any future career path.</p>
+            <p style="margin-bottom: 1rem;">Modern programming often involves teamwork. Children learn to communicate their ideas clearly, work collaboratively on projects, and give and receive constructive feedback. These soft skills are valuable in any future career path.</p>
         `,
     },
     choosing: {
@@ -1141,7 +1141,7 @@ const blogContent = {
             <p>Ensure you understand the technical requirements and support provided. Good programs offer guidance on necessary software, hardware recommendations, and technical support for both students and parents.</p>
             
             <h4>Trial Classes and Flexibility</h4>
-            <p>Many quality programs offer trial classes or money-back guarantees. Take advantage of these opportunities to ensure the program is a good fit for your child's interests and learning style before making a long-term commitment.</p>
+            <p style="margin-bottom: 1rem;">Many quality programs offer trial classes or money-back guarantees. Take advantage of these opportunities to ensure the program is a good fit for your child's interests and learning style before making a long-term commitment.</p>
         `,
     },
 };
