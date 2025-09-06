@@ -24,15 +24,15 @@ const navLinks = document.querySelectorAll("[data-nav-link]");
 const overlay = document.querySelector("[data-overlay]");
 
 const toggleNavbar = function () {
-    navbar.classList.toggle("active");
-    overlay.classList.toggle("active");
+    if (navbar) navbar.classList.toggle("active");
+    if (overlay) overlay.classList.toggle("active");
 };
 
 addEventOnElem(navTogglers, "click", toggleNavbar);
 
 const closeNavbar = function () {
-    navbar.classList.remove("active");
-    overlay.classList.remove("active");
+    if (navbar) navbar.classList.remove("active");
+    if (overlay) overlay.classList.remove("active");
 };
 
 addEventOnElem(navLinks, "click", closeNavbar);
@@ -140,7 +140,6 @@ function initEmailJS() {
                         "success"
                     );
                     document.getElementById("contact-form").reset();
-                    
                 })
                 .catch((err) => {
                     console.error("EmailJS error:", err);
@@ -683,15 +682,13 @@ function initCountryDropdown() {
         //     countrySearch: !!countrySearch,
         // });
 
+        // Check if country dropdown elements exist (they may not be present on all pages)
         if (
             !selectedCountryEl ||
             !dropdownContent ||
             !countriesList ||
             !countrySearch
         ) {
-            console.error(
-                "Some required elements not found for country dropdown"
-            );
             return;
         }
 
@@ -910,3 +907,314 @@ if (document.readyState === "loading") {
 }
 
 // initFormHandler removed - EmailJS handler in initEmailJS() now handles all form processing
+
+/**
+ * Blog Modal Functionality
+ */
+
+// Blog content data
+const blogContent = {
+    scratch: {
+        title: "Getting Started with Scratch Programming for Kids",
+        category: "Scratch Programming",
+        date: "January 15, 2024",
+        readTime: "5 min read",
+        image: "./assets/images/scratch-game.jpg",
+        content: `
+            <h4>What is Scratch Programming?</h4>
+            <p>Scratch is a visual programming language developed by MIT that allows children to create interactive stories, games, and animations by dragging and dropping code blocks. Instead of typing complex code, kids can snap together colorful blocks that represent different programming concepts.</p>
+            
+            <h4>Why Choose Scratch for Young Learners?</h4>
+            <p>Scratch eliminates the syntax barriers that often frustrate beginners in traditional programming languages. Children can focus on <strong>logical thinking</strong> and <strong>problem-solving</strong> without getting stuck on semicolons and brackets.</p>
+            
+            <p>The platform encourages creativity while teaching fundamental programming concepts like:</p>
+            <ul>
+                <li>Sequencing and loops</li>
+                <li>Conditional statements (if/then)</li>
+                <li>Variables and data handling</li>
+                <li>Event-driven programming</li>
+                <li>Debugging and iteration</li>
+            </ul>
+            
+            <h4>Getting Started: Your First Scratch Project</h4>
+            <p>We recommend starting with simple animations before moving to interactive games. A great first project is creating a dancing cat that responds to keyboard presses. This introduces basic movement, events, and user interaction in a fun, engaging way.</p>
+            
+            <p>As children progress, they can create more complex projects like maze games, storytelling adventures, and even simple simulations. The beauty of Scratch lies in its ability to grow with the learner.</p>
+            
+            <h4>Building Confidence Through Creation</h4>
+            <p>Every project in Scratch is an opportunity for children to see their ideas come to life. This immediate feedback loop builds confidence and encourages experimentation. Kids learn that making mistakes is part of the learning process and that debugging is a valuable skill.</p>
+        `,
+    },
+    python: {
+        title: "Why Python is Perfect for Young Programmers",
+        category: "Python",
+        date: "January 10, 2024",
+        readTime: "7 min read",
+        image: "./assets/images/python-class.jpg",
+        content: `
+            <h4>The Power of Python's Simplicity</h4>
+            <p>Python's syntax closely resembles natural English, making it incredibly accessible for young minds. While other languages require complex syntax, Python allows students to focus on solving problems rather than fighting with code formatting.</p>
+            
+            <h4>Real-World Applications Kids Can Build</h4>
+            <p>Unlike toy programming languages, Python is used by major companies worldwide. This means the skills your child learns have real-world value. They can create:</p>
+            <ul>
+                <li>Interactive games and puzzles</li>
+                <li>Data analysis and visualization projects</li>
+                <li>Web applications and APIs</li>
+                <li>Automation scripts and tools</li>
+                <li>Machine learning and AI projects</li>
+            </ul>
+            
+            <h4>Industry Recognition and Future Opportunities</h4>
+            <p><strong>Google, Netflix, Instagram, and Spotify</strong> all rely heavily on Python. By learning Python, your child is acquiring skills that are directly applicable to future career opportunities in technology.</p>
+            
+            <h4>Perfect Transition from Visual Programming</h4>
+            <p>For students who have mastered visual programming languages like Scratch, Python provides the perfect next step. The logical concepts remain the same, but now they're expressed through text-based code, preparing students for more advanced programming concepts.</p>
+            
+            <h4>Extensive Learning Resources and Community</h4>
+            <p>Python has one of the most welcoming and supportive communities in programming. Thousands of tutorials, libraries, and projects are available for free, ensuring your child always has resources to explore new interests and challenges.</p>
+            
+            <p>The language's versatility means that whether your child is interested in game development, web design, data science, or artificial intelligence, Python can accommodate their interests and grow with their ambitions.</p>
+        `,
+    },
+    "web-dev": {
+        title: "Building Your First Website: A Teen's Guide",
+        category: "Web Development",
+        date: "January 5, 2024",
+        readTime: "6 min read",
+        image: "./assets/images/web-development.jpg",
+        content: `
+            <h4>The Foundation: HTML, CSS, and JavaScript</h4>
+            <p>Web development is built on three core technologies that work together like the foundation, decoration, and functionality of a house:</p>
+            <ul>
+                <li><strong>HTML</strong> - The structure and content</li>
+                <li><strong>CSS</strong> - The design and styling</li>
+                <li><strong>JavaScript</strong> - The interactive behavior</li>
+            </ul>
+            
+            <h4>Your First Website Project Ideas</h4>
+            <p>Starting with personal projects makes learning more engaging and meaningful. Consider building:</p>
+            <ul>
+                <li>A personal portfolio showcasing your interests and skills</li>
+                <li>A blog about your hobbies or passions</li>
+                <li>A simple game like Tic-Tac-Toe or a quiz app</li>
+                <li>A tribute page to someone you admire</li>
+                <li>A local business website for family or friends</li>
+            </ul>
+            
+            <h4>Modern Web Development Tools</h4>
+            <p>Today's web developers have access to amazing tools that make development faster and more enjoyable. Popular frameworks like <strong>React, Vue, and Angular</strong> allow developers to build complex applications with reusable components.</p>
+            
+            <h4>Responsive Design: Building for All Devices</h4>
+            <p>Modern websites must work seamlessly on phones, tablets, and computers. Learning responsive design principles from the start ensures your websites look great everywhere. CSS Grid and Flexbox are powerful tools that make responsive design much easier than it used to be.</p>
+            
+            <h4>Career Opportunities in Web Development</h4>
+            <p>Web development offers incredible career flexibility. You can work as a freelancer, join a startup, work for a large corporation, or even start your own web development business. The demand for skilled web developers continues to grow as more businesses move online.</p>
+            
+            <p>Plus, web development skills are transferable to mobile app development, desktop applications, and even emerging technologies like progressive web apps (PWAs) that blur the line between websites and native mobile apps.</p>
+        `,
+    },
+    java: {
+        title: "Java Programming: Building Strong Foundations",
+        category: "Java",
+        date: "December 28, 2023",
+        readTime: "8 min read",
+        image: "./assets/images/java.png",
+        content: `
+            <h4>Why Java Remains a Programming Powerhouse</h4>
+            <p>Java's motto "Write Once, Run Anywhere" isn't just marketing - it's a fundamental advantage that has kept Java relevant for decades. Java applications can run on any device with a Java Virtual Machine, from smartphones to supercomputers.</p>
+            
+            <h4>Object-Oriented Programming Mastery</h4>
+            <p>Java is an excellent language for learning <strong>object-oriented programming (OOP)</strong> concepts that are fundamental to modern software development:</p>
+            <ul>
+                <li>Classes and objects</li>
+                <li>Inheritance and polymorphism</li>
+                <li>Encapsulation and abstraction</li>
+                <li>Design patterns and best practices</li>
+            </ul>
+            
+            <h4>Enterprise-Level Applications</h4>
+            <p>Many of the world's largest applications are built with Java. Banking systems, e-commerce platforms, and enterprise software rely on Java's stability, security, and performance. Learning Java opens doors to working on systems that serve millions of users.</p>
+            
+            <h4>Android App Development</h4>
+            <p>Java has been the primary language for Android app development for years. While Kotlin is now also supported, Java skills remain valuable for mobile development. Students can create apps for the world's most popular mobile platform.</p>
+            
+            <h4>Strong Foundation for Computer Science</h4>
+            <p>Java's strict syntax and strong typing system teach good programming habits from the start. Students learn to think carefully about data types, method signatures, and program structure. These skills transfer well to other languages and advanced computer science concepts.</p>
+            
+            <h4>Excellent Learning Resources and Career Paths</h4>
+            <p>Java has extensive documentation, tutorials, and learning resources. The language's maturity means there are established best practices and clear career progression paths. From junior developer to software architect, Java provides a solid foundation for long-term career growth.</p>
+            
+            <p>Universities worldwide use Java in computer science curricula, making it an excellent choice for students planning to pursue formal computer science education.</p>
+        `,
+    },
+    benefits: {
+        title: "The Benefits of Learning to Code at an Early Age",
+        category: "Education",
+        date: "December 20, 2023",
+        readTime: "5 min read",
+        image: "./assets/images/kids-coding-1.png",
+        content: `
+            <h4>Cognitive Development and Problem-Solving Skills</h4>
+            <p>Coding teaches children to break down complex problems into smaller, manageable parts. This <strong>computational thinking</strong> approach improves their ability to tackle challenges in all areas of life, from math homework to social situations.</p>
+            
+            <h4>Enhanced Mathematical Understanding</h4>
+            <p>Programming naturally reinforces mathematical concepts like:</p>
+            <ul>
+                <li>Logic and reasoning</li>
+                <li>Patterns and sequences</li>
+                <li>Geometry and spatial relationships</li>
+                <li>Algebra and variables</li>
+                <li>Statistics and data analysis</li>
+            </ul>
+            
+            <h4>Improved Academic Performance</h4>
+            <p>Research consistently shows that students who learn programming perform better in traditional subjects. The logical thinking skills developed through coding enhance performance in mathematics, science, and even language arts.</p>
+            
+            <h4>Creativity and Digital Literacy</h4>
+            <p>Coding is a creative medium that allows children to bring their imagination to life. Whether creating games, animations, or interactive stories, programming provides a powerful outlet for creative expression while building essential digital literacy skills.</p>
+            
+            <h4>Future Career Advantages</h4>
+            <p>Even in non-technical careers, programming skills provide significant advantages. From automating repetitive tasks to analyzing data, coding skills are valuable in fields like:</p>
+            <ul>
+                <li>Business and finance</li>
+                <li>Healthcare and medicine</li>
+                <li>Education and research</li>
+                <li>Arts and entertainment</li>
+                <li>Environmental science</li>
+            </ul>
+            
+            <h4>Building Confidence and Persistence</h4>
+            <p>Programming teaches children that mistakes are learning opportunities. The iterative process of coding, testing, and debugging builds resilience and persistence. Children learn to approach challenges with confidence, knowing they can find solutions through systematic thinking.</p>
+            
+            <h4>Collaborative Skills and Communication</h4>
+            <p>Modern programming often involves teamwork. Children learn to communicate their ideas clearly, work collaboratively on projects, and give and receive constructive feedback. These soft skills are valuable in any future career path.</p>
+        `,
+    },
+    choosing: {
+        title: "How to Choose the Right Coding Class for Your Child",
+        category: "Tips",
+        date: "December 15, 2023",
+        readTime: "6 min read",
+        image: "./assets/images/kids-coding-2.png",
+        content: `
+            <h4>Age-Appropriate Learning Paths</h4>
+            <p>Different age groups benefit from different approaches to coding education:</p>
+            <ul>
+                <li><strong>Ages 5-8:</strong> Visual programming with Scratch Jr. or similar block-based tools</li>
+                <li><strong>Ages 8-12:</strong> Scratch programming and introduction to basic web development</li>
+                <li><strong>Ages 12-16:</strong> Text-based languages like Python, JavaScript, or Java</li>
+                <li><strong>Ages 16+:</strong> Specialized tracks in web development, mobile apps, or data science</li>
+            </ul>
+            
+            <h4>Learning Style Considerations</h4>
+            <p>Understanding your child's learning style helps determine the best educational approach:</p>
+            <ul>
+                <li><strong>Visual learners:</strong> Benefit from drag-and-drop interfaces and visual feedback</li>
+                <li><strong>Kinesthetic learners:</strong> Enjoy hands-on projects and building physical computing projects</li>
+                <li><strong>Auditory learners:</strong> Thrive in discussion-based classes with verbal explanations</li>
+                <li><strong>Social learners:</strong> Prefer group projects and collaborative coding environments</li>
+            </ul>
+            
+            <h4>Class Size and Individual Attention</h4>
+            <p>Consider the benefits of different class structures:</p>
+            <ul>
+                <li><strong>1:1 Classes:</strong> Maximum personalization and flexible pacing</li>
+                <li><strong>Small Groups (2-4 students):</strong> Balance of individual attention and peer learning</li>
+                <li><strong>Larger Classes (5+ students):</strong> Cost-effective with strong collaborative elements</li>
+            </ul>
+            
+            <h4>Instructor Qualifications and Teaching Style</h4>
+            <p>Look for instructors who combine technical expertise with educational experience. The best coding teachers understand both programming concepts and child development, adapting their teaching style to engage young learners effectively.</p>
+            
+            <h4>Curriculum Depth and Progression</h4>
+            <p>Evaluate whether the program offers:</p>
+            <ul>
+                <li>Clear learning objectives and milestones</li>
+                <li>Progressive skill building from basic to advanced concepts</li>
+                <li>Project-based learning with tangible outcomes</li>
+                <li>Opportunities for creative expression and personal projects</li>
+                <li>Regular assessment and feedback</li>
+            </ul>
+            
+            <h4>Technology Requirements and Support</h4>
+            <p>Ensure you understand the technical requirements and support provided. Good programs offer guidance on necessary software, hardware recommendations, and technical support for both students and parents.</p>
+            
+            <h4>Trial Classes and Flexibility</h4>
+            <p>Many quality programs offer trial classes or money-back guarantees. Take advantage of these opportunities to ensure the program is a good fit for your child's interests and learning style before making a long-term commitment.</p>
+        `,
+    },
+};
+
+// Modal functionality
+const blogModal = document.getElementById("blogModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalMeta = document.getElementById("modalMeta");
+const modalImageContainer = document.getElementById("modalImageContainer");
+const modalText = document.getElementById("modalText");
+const modalCloseBtn = document.getElementById("modalCloseBtn");
+const modalOverlay = document.getElementById("modalOverlay");
+
+// Function to open modal
+function openBlogModal(blogId) {
+    const blog = blogContent[blogId];
+    if (!blog) return;
+
+    // Populate modal content
+    modalTitle.textContent = blog.title;
+    modalMeta.innerHTML = `
+        <time datetime="${blog.date}">${blog.date}</time>
+        <span class="read-time">${blog.readTime}</span>
+    `;
+    modalImageContainer.innerHTML = `
+        <img src="${blog.image}" alt="${blog.title}" class="img-cover">
+        <div class="article-category">${blog.category}</div>
+    `;
+    modalText.innerHTML = blog.content;
+
+    // Show modal
+    blogModal.classList.add("active");
+    document.body.style.overflow = "hidden";
+}
+
+// Function to close modal
+function closeBlogModal() {
+    blogModal.classList.remove("active");
+    document.body.style.overflow = "";
+}
+
+// Event listeners for blog modal
+if (blogModal) {
+    // Close button
+    modalCloseBtn?.addEventListener("click", closeBlogModal);
+
+    // Overlay click
+    modalOverlay?.addEventListener("click", closeBlogModal);
+
+    // Escape key
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && blogModal.classList.contains("active")) {
+            closeBlogModal();
+        }
+    });
+
+    // Read more buttons
+    const readMoreBtns = document.querySelectorAll(
+        ".read-more-btn[data-blog-id]"
+    );
+    readMoreBtns.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const blogId = btn.getAttribute("data-blog-id");
+            openBlogModal(blogId);
+        });
+    });
+}
+
+// Prevent modal content scrolling from affecting body
+if (blogModal) {
+    const modalContent = blogModal.querySelector(".modal-content");
+    modalContent?.addEventListener("wheel", (e) => {
+        e.stopPropagation();
+    });
+}
