@@ -1628,6 +1628,7 @@ body {
     line-height: 1.8;
     color: var(--eerie-black-1);
     font-size: var(--fs-5);
+    padding-bottom: 50px; /* Extra bottom padding for better spacing */
 }
 
 .modal-text h4 {
@@ -1643,6 +1644,10 @@ body {
 
 .modal-text p {
     margin-bottom: 20px;
+}
+
+.modal-text p:last-child {
+    margin-bottom: 30px; /* Extra margin for the last paragraph */
 }
 
 .modal-text ul,
@@ -1700,11 +1705,16 @@ body {
     .modal-text {
         padding: 20px;
         font-size: var(--fs-6);
+        padding-bottom: 40px; /* Extra bottom padding for mobile */
     }
 
     .modal-text h4 {
         font-size: var(--fs-4);
         margin: 20px 0 10px;
+    }
+
+    .modal-text p:last-child {
+        margin-bottom: 25px; /* Extra margin for the last paragraph on mobile */
     }
 }
 
@@ -1728,10 +1738,15 @@ body {
 
     .modal-text {
         padding: 15px;
+        padding-bottom: 35px; /* Extra bottom padding for small mobile */
     }
 
     .modal-image-container img {
         height: 180px;
+    }
+
+    .modal-text p:last-child {
+        margin-bottom: 20px; /* Extra margin for the last paragraph on small mobile */
     }
 }
 
