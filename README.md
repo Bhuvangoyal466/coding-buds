@@ -117,7 +117,7 @@ codingbuds/
 **Anjali Singla** - Computer Science Engineer with:
 - 5+ years industrial experience
 - 5+ years teaching kids programming worldwide
-- 400+ students successfully trained
+- 600+ students successfully trained
 
 ## Statistics
 - 🎓 **600+** Students Trained
