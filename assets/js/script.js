@@ -920,6 +920,7 @@ const blogContent = {
         date: "January 15, 2024",
         readTime: "5 min read",
         image: "./assets/images/scratch-game.jpg",
+        webpImage: "./assets/images/scratch-game.webp",
         content: `
             <h4>What is Scratch Programming?</h4>
             <p>Scratch is a visual programming language developed by MIT that allows children to create interactive stories, games, and animations by dragging and dropping code blocks. Instead of typing complex code, kids can snap together colorful blocks that represent different programming concepts.</p>
@@ -951,6 +952,7 @@ const blogContent = {
         date: "January 10, 2024",
         readTime: "7 min read",
         image: "./assets/images/python-class.jpg",
+        webpImage: "./assets/images/python-class.webp",
         content: `
             <h4>The Power of Python's Simplicity</h4>
             <p>Python's syntax closely resembles natural English, making it incredibly accessible for young minds. While other languages require complex syntax, Python allows students to focus on solving problems rather than fighting with code formatting.</p>
@@ -983,6 +985,7 @@ const blogContent = {
         date: "January 5, 2024",
         readTime: "6 min read",
         image: "./assets/images/web-development.jpg",
+        webpImage: "./assets/images/web-development.webp",
         content: `
             <h4>The Foundation: HTML, CSS, and JavaScript</h4>
             <p>Web development is built on three core technologies that work together like the foundation, decoration, and functionality of a house:</p>
@@ -1020,6 +1023,7 @@ const blogContent = {
         date: "December 28, 2023",
         readTime: "8 min read",
         image: "./assets/images/java.png",
+        webpImage: "./assets/images/java.webp",
         content: `
             <h4>Why Java Remains a Programming Powerhouse</h4>
             <p>Java's motto "Write Once, Run Anywhere" isn't just marketing - it's a fundamental advantage that has kept Java relevant for decades. Java applications can run on any device with a Java Virtual Machine, from smartphones to supercomputers.</p>
@@ -1054,6 +1058,7 @@ const blogContent = {
         date: "December 20, 2023",
         readTime: "5 min read",
         image: "./assets/images/kids-coding-1.png",
+        webpImage: "./assets/images/kids-coding-1.webp",
         content: `
             <h4>Cognitive Development and Problem-Solving Skills</h4>
             <p>Coding teaches children to break down complex problems into smaller, manageable parts. This <strong>computational thinking</strong> approach improves their ability to tackle challenges in all areas of life, from math homework to social situations.</p>
@@ -1097,6 +1102,7 @@ const blogContent = {
         date: "December 15, 2023",
         readTime: "6 min read",
         image: "./assets/images/kids-coding-2.png",
+        webpImage: "./assets/images/kids-coding-2.webp",
         content: `
             <h4>Age-Appropriate Learning Paths</h4>
             <p>Different age groups benefit from different approaches to coding education:</p>
@@ -1167,7 +1173,10 @@ function openBlogModal(blogId) {
         <span class="read-time">${blog.readTime}</span>
     `;
     modalImageContainer.innerHTML = `
-        <img src="${blog.image}" alt="${blog.title}" class="img-cover">
+        <picture>
+            <source srcset="${blog.webpImage}" type="image/webp">
+            <img src="${blog.image}" alt="${blog.title}" class="img-cover">
+        </picture>
         <div class="article-category">${blog.category}</div>
     `;
     modalText.innerHTML = blog.content;
