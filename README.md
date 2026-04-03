@@ -126,7 +126,7 @@ codingbuds/
 - 🌍 **10+** Years of Experience
 
 ## License
-© 2025 Coding Buds. All Rights Reserved.
+© 2026 Coding Buds. All Rights Reserved.
 
 ---
 

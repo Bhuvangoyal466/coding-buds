@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -66,9 +66,9 @@
         <meta name="twitter:site" content="@coding_buds" />
 
         <!-- Additional SEO Meta Tags -->
-        <meta name="theme-color" content="#2AAA8A" />
+        <meta name="theme-color" content="#1B2D5B" />
         <meta name="application-name" content="Coding Buds" />
-        <meta name="msapplication-TileColor" content="#2AAA8A" />
+        <meta name="msapplication-TileColor" content="#1B2D5B" />
 
         <!-- Geographic targeting -->
         <meta name="geo.region" content="IN" />
@@ -79,10 +79,13 @@
   -->
         <link
             rel="shortcut icon"
-            href="./assets/images/logo2.webp"
-            type="image/png"
+            href="./assets/images/Updated%20logo.jpeg"
+            type="image/jpeg"
         />
-        <link rel="apple-touch-icon" href="./assets/images/logo2.webp" />
+        <link
+            rel="apple-touch-icon"
+            href="./assets/images/Updated%20logo.jpeg"
+        />
 
         <!-- 
     - custom css link - preload for performance
@@ -91,7 +94,10 @@
             rel="preload"
             href="./assets/css/style.css"
             as="style"
-            onload="this.onload=null;this.rel='stylesheet'"
+            onload="
+                this.onload = null;
+                this.rel = 'stylesheet';
+            "
         />
         <noscript
             ><link rel="stylesheet" href="./assets/css/style.css"
@@ -106,7 +112,7 @@
             href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&family=Poppins:wght@400;500&display=swap&display=swap"
             rel="stylesheet"
             media="print"
-            onload="this.media='all'"
+            onload="this.media = 'all'"
         />
         <noscript>
             <link
@@ -151,7 +157,7 @@
                         "name": "Coding Buds",
                         "alternateName": "CodingBuds",
                         "url": "https://www.codingbuds.com/",
-                        "logo": "https://www.codingbuds.com/assets/images/coding-buds-logo.png",
+                        "logo": "https://www.codingbuds.com/assets/images/Updated%20logo.jpeg",
                         "description": "Expert-led 1:1 & group coding classes for kids aged 6-16. Choose personalized or collaborative learning. Teaching Scratch, Python, Web Development & Java with customized curriculum.",
                         "founder": {
                             "@type": "Person",
@@ -292,39 +298,27 @@
         <header class="header" data-header>
             <div class="container">
                 <a href="#home" class="logo">
-                    <picture>
-                        <source
-                            srcset="./assets/images/logo2.webp"
-                            type="image/webp"
-                        />
-                        <img
-                            src="./assets/images/logo2.jpg"
-                            width="100"
-                            height="50"
-                            alt="Coding Buds logo"
-                            style="border-radius: 50%"
-                            loading="lazy"
-                        />
-                    </picture>
+                    <img
+                        src="./assets/images/Updated%20logo.jpeg"
+                        width="100"
+                        height="50"
+                        alt="Coding Buds logo"
+                        style="border-radius: 50%"
+                        loading="lazy"
+                    />
                 </a>
 
                 <nav class="navbar" data-navbar>
                     <div class="wrapper">
                         <a href="#" class="logo">
-                            <picture>
-                                <source
-                                    srcset="./assets/images/logo2.webp"
-                                    type="image/webp"
-                                />
-                                <img
-                                    src="./assets/images/logo2.jpg"
-                                    style="border-radius: 10%"
-                                    width="162"
-                                    alt="Coding Buds logo"
-                                    height="50"
-                                    loading="lazy"
-                                />
-                            </picture>
+                            <img
+                                src="./assets/images/Updated%20logo.jpeg"
+                                style="border-radius: 10%"
+                                width="162"
+                                alt="Coding Buds logo"
+                                height="50"
+                                loading="lazy"
+                            />
                         </a>
 
                         <button
@@ -429,7 +423,9 @@
                     class="section hero has-bg-image"
                     id="home"
                     aria-label="home"
-                    style="background-image: url('./assets/images/hero-bg.svg')"
+                    style="
+                        background-image: url(&quot;./assets/images/hero-bg.svg&quot;);
+                    "
                 >
                     <div class="container">
                         <div class="hero-content">
@@ -879,7 +875,7 @@
                                             class="card-text"
                                             style="
                                                 font-size: 0.9em;
-                                                color: #666;
+                                                color: #444444;
                                                 margin-top: 8px;
                                             "
                                         >
@@ -984,7 +980,7 @@
                                             class="card-text"
                                             style="
                                                 font-size: 0.9em;
-                                                color: #666;
+                                                color: #444444;
                                                 margin-top: 8px;
                                             "
                                         >
@@ -1088,7 +1084,7 @@
                                             class="card-text"
                                             style="
                                                 font-size: 0.9em;
-                                                color: #666;
+                                                color: #444444;
                                                 margin-top: 8px;
                                             "
                                         >
@@ -1193,7 +1189,7 @@
                                             class="card-text"
                                             style="
                                                 font-size: 0.9em;
-                                                color: #666;
+                                                color: #444444;
                                                 margin-top: 8px;
                                             "
                                         >
@@ -1922,26 +1918,22 @@
 
         <footer
             class="footer"
-            style="background-image: url('./assets/images/footer-bg.png')"
+            style="
+                background-image: url(&quot;./assets/images/footer-bg.png&quot;);
+            "
         >
             <div class="footer-top section">
                 <div class="container grid-list">
                     <div class="footer-brand">
                         <a href="#" class="logo">
-                            <picture>
-                                <source
-                                    srcset="./assets/images/logo2.webp"
-                                    type="image/webp"
-                                />
-                                <img
-                                    src="./assets/images/logo2.jpg"
-                                    width="162"
-                                    height="50"
-                                    style="border-radius: 100%"
-                                    alt="Coding Buds logo"
-                                    loading="lazy"
-                                />
-                            </picture>
+                            <img
+                                src="./assets/images/Updated%20logo.jpeg"
+                                width="162"
+                                height="50"
+                                style="border-radius: 100%"
+                                alt="Coding Buds logo"
+                                loading="lazy"
+                            />
                         </a>
 
                         <p class="footer-brand-text">
