@@ -57,11 +57,12 @@ export function ContactSection() {
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const form = event.currentTarget;
     setSubmitting(true);
     setStatus({ type: "idle", message: "" });
 
     try {
-      const formData = new FormData(event.currentTarget);
+      const formData = new FormData(form);
       const phone = `${selectedCountry.dialCode} ${String(formData.get("phone") || "").trim()}`.trim();
 
       await emailjs.send(
@@ -85,7 +86,7 @@ export function ContactSection() {
         type: "success",
         message: "Thank you. Your free trial request has been sent successfully.",
       });
-      event.currentTarget.reset();
+      form.reset();
       setSelectedCountry(defaultCountry);
       setSearch("");
     } catch {
