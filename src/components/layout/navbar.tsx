@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { BookOpen, CircleHelp, House, Menu, Newspaper, UserRound, UsersRound, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { navItems, siteConfig } from "@/lib/site-data";
@@ -15,6 +15,15 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [sectionActive, setSectionActive] = useState("home");
   const active = isHomePage ? sectionActive : pathname === "/blogs" ? "blogs" : "home";
+  const mobileNavItems = navItems.filter((item) => item.label !== "Contact");
+  const mobileMenuIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+    Home: House,
+    About: UserRound,
+    Courses: BookOpen,
+    Testimonials: UsersRound,
+    FAQ: CircleHelp,
+    Blogs: Newspaper,
+  };
 
   const darkNavbar = isHomePage || scrolled;
 
@@ -141,7 +150,7 @@ export function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-60 bg-[#08101f]/80 backdrop-blur-sm lg:hidden"
+            className="fixed inset-0 z-80 bg-[#040814]/92 lg:hidden"
             onClick={() => setMenuOpen(false)}
           >
             <motion.aside
@@ -149,7 +158,7 @@ export function Navbar() {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: 280, opacity: 0 }}
               transition={{ type: "spring", stiffness: 280, damping: 32 }}
-              className="absolute right-0 top-0 flex h-full w-[min(88vw,22rem)] flex-col bg-[#0d1630] p-6 text-white shadow-2xl"
+              className="absolute right-0 top-0 flex h-dvh w-[min(90vw,24rem)] flex-col overflow-y-auto border-l border-white/10 bg-[#0b1328] p-6 text-white shadow-[0_30px_80px_rgba(0,0,0,0.55)]"
               onClick={(event) => event.stopPropagation()}
             >
               <div className="mb-8 flex items-center justify-between">
@@ -163,22 +172,35 @@ export function Navbar() {
                   <X className="h-5 w-5" />
                 </button>
               </div>
-              <div className="flex flex-1 flex-col gap-2">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    onClick={() => setMenuOpen(false)}
-                    className="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-lg font-medium transition hover:bg-white/10"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+              <div className="flex flex-1 flex-col gap-3 pb-4">
+                {mobileNavItems.map((item) => {
+                  const hrefId = item.href.startsWith("/#") ? item.href.replace("/#", "") : "blogs";
+                  const isActive = hrefId === active || (item.href === "/blogs" && active === "blogs");
+
+                  return (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      onClick={() => setMenuOpen(false)}
+                      className={`flex items-center gap-3 rounded-2xl border py-3.5 pl-6 pr-4 text-base font-semibold text-white/95 transition ${
+                        isActive
+                          ? "border-white/25 bg-[#22355f]"
+                          : "border-white/15 bg-[#162341] hover:bg-[#1f2e52]"
+                      }`}
+                    >
+                      {(() => {
+                        const Icon = mobileMenuIcons[item.label] ?? House;
+                        return <Icon className="h-5 w-5 shrink-0 text-white/85" />;
+                      })()}
+                      {item.label}
+                    </Link>
+                  );
+                })}
               </div>
               <Link
                 href="/#contact"
                 onClick={() => setMenuOpen(false)}
-                className="mt-6 inline-flex items-center justify-center rounded-full bg-[#E8511A] px-5 py-4 font-semibold text-white"
+                className="mt-5 inline-flex items-center justify-center rounded-full bg-[#E8511A] px-5 py-4 font-semibold text-white shadow-lg shadow-[#E8511A]/30"
               >
                 Book a Free Trial Class
               </Link>
