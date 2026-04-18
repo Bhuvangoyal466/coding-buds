@@ -14,7 +14,7 @@ export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [sectionActive, setSectionActive] = useState("home");
-  const active = isHomePage ? sectionActive : pathname === "/blogs" ? "blogs" : "home";
+  const active = isHomePage ? sectionActive : pathname.startsWith("/blogs") ? "blogs" : "home";
   const mobileNavItems = navItems.filter((item) => item.label !== "Contact");
   const mobileMenuIcons: Record<string, React.ComponentType<{ className?: string }>> = {
     Home: House,
