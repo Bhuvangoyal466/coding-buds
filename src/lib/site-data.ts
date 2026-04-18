@@ -57,6 +57,7 @@ export type BlogPost = {
   readTime: string;
   image: string;
   imageAlt: string;
+  teaser: string;
   excerpt: string;
   paragraphs: string[]; // kept for backward compat
   body: BodyBlock[];
@@ -246,6 +247,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "5 min read",
     image: "/assets/images/scratch-game.webp",
     imageAlt: "Getting started with Scratch programming",
+    teaser: "Is 6 really old enough to start coding? Spoiler: yes — and Scratch is exactly why. Here's what your child can build in their very first session.",
     excerpt: "Scratch is the perfect introduction to coding for children. This visual programming language uses colourful blocks instead of complex text — making it ideal for ages 6 to 12.",
     paragraphs: [
       "Scratch helps children develop logical thinking, problem-solving skills, and creativity while building games, animations, and interactive stories.",
@@ -298,6 +300,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "7 min read",
     image: "/assets/images/python-class.webp",
     imageAlt: "Python programming for young minds",
+    teaser: "Google, NASA, and Instagram all run on Python. So why aren't more kids learning it? We break down why it's the smartest second step after Scratch.",
     excerpt: "Python's simple syntax and powerful capabilities make it an ideal first text-based programming language for kids and teens aged 8 and above.",
     paragraphs: [
       "Discover why Python is used by companies like Google, Netflix, and Instagram, and how your child can start building applications, games, and AI projects with it.",
@@ -344,6 +347,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "6 min read",
     image: "/assets/images/web-development.webp",
     imageAlt: "Web development for teenagers",
+    teaser: "Your teenager could have a real, live website online by the end of this course. Here's what that actually looks like — and why universities are paying attention.",
     excerpt: "Web development opens doors to endless possibilities. Learn how teenagers can create their own websites using HTML, CSS, and JavaScript — and why every parent should consider this course for their child.",
     paragraphs: [
       "From personal portfolios to interactive games, web development lets students bring ideas to life on the web.",
@@ -387,6 +391,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "8 min read",
     image: "/assets/images/java.webp",
     imageAlt: "Java programming fundamentals",
+    teaser: "Most school computer science syllabuses test Java. Most kids arrive underprepared. Here's how to change that before exam season starts.",
     excerpt: "Java is one of the most popular programming languages in the world and a strong choice for students who want to build rigorous computer science foundations — particularly those aiming for competitive exams or technology careers.",
     paragraphs: [
       "Explore Java's object-oriented principles, platform independence, and real-world applications.",
@@ -435,6 +440,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "5 min read",
     image: "/assets/images/kids-coding-1.webp",
     imageAlt: "Benefits of learning to code early",
+    teaser: "A teacher told one parent: 'Your daughter is the most systematic thinker in her class.' She'd been coding for two years. Here's what early coding actually does to a child's brain.",
     excerpt: "Early coding education develops critical thinking, problem-solving abilities, creativity, and logical reasoning. Here is what the research shows — and what parents who have made the decision early have seen in their own children.",
     paragraphs: [
       "Research shows that children who learn coding early often perform better in math, science, and language arts.",
@@ -477,6 +483,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "6 min read",
     image: "/assets/images/kids-coding-2.webp",
     imageAlt: "Choosing the right coding class",
+    teaser: "Not all coding classes are equal — and the wrong one can put your child off coding for good. Here are 6 questions every parent should ask before signing up.",
     excerpt: "With so many coding classes available for children, choosing the right one can feel overwhelming. Here is a practical guide to help parents make the right decision — and the questions you should always ask before enrolling.",
     paragraphs: [
       "Consider age-appropriateness, learning style, class size, instructor qualifications, and curriculum depth.",

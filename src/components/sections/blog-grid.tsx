@@ -25,7 +25,7 @@ export function BlogGrid({ posts = blogPosts, limit, compact = false }: BlogGrid
         <SectionHeading
           eyebrow="Latest Articles"
           title="Educational Blog Posts"
-          description="Discover coding tips, educational content, and insights from our expert instructors to help your child's programming journey."
+          description="Practical guides written for parents — no jargon, just honest answers about coding education for kids."
         />
 
         <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -36,10 +36,10 @@ export function BlogGrid({ posts = blogPosts, limit, compact = false }: BlogGrid
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
-              className="card-surface overflow-hidden"
+              className="card-surface overflow-hidden flex flex-col"
             >
               <Link href={`/blogs/${post.slug}`} className="block">
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative h-52 overflow-hidden">
                   <Image
                     src={post.image}
                     alt={post.imageAlt}
@@ -53,32 +53,32 @@ export function BlogGrid({ posts = blogPosts, limit, compact = false }: BlogGrid
                 </div>
               </Link>
 
-              <div className="space-y-4 p-6">
-                <div className="flex flex-wrap items-center gap-4 text-xs font-medium uppercase tracking-[0.22em] text-slate-500">
+              <div className="flex flex-1 flex-col space-y-4 p-6">
+                <div className="flex flex-wrap items-center gap-4 text-xs font-medium uppercase tracking-[0.22em] text-slate-400">
                   <span className="inline-flex items-center gap-2">
-                    <CalendarDays className="h-4 w-4" />
+                    <CalendarDays className="h-3.5 w-3.5" />
                     {new Intl.DateTimeFormat("en-US", {
-                      month: "long",
+                      month: "short",
                       day: "numeric",
                       year: "numeric",
                     }).format(new Date(post.date))}
                   </span>
                   <span className="inline-flex items-center gap-2">
-                    <Clock className="h-4 w-4" />
+                    <Clock className="h-3.5 w-3.5" />
                     {post.readTime}
                   </span>
                 </div>
 
-                <h3 className="font-heading text-2xl font-semibold leading-tight text-[#1B2D5B]">
+                <h3 className="font-heading text-xl font-semibold leading-tight text-[#1B2D5B]">
                   {post.title}
                 </h3>
-                <p className="text-sm leading-7 text-slate-600">{post.excerpt}</p>
+                <p className="flex-1 text-sm leading-7 text-slate-600">{post.teaser}</p>
 
                 <Link
                   href={`/blogs/${post.slug}`}
-                  className="inline-flex items-center gap-2 rounded-full bg-[#1B2D5B] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#132145]"
+                  className="mt-2 inline-flex w-fit items-center gap-2 rounded-full bg-[#E8511A] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#cf4514]"
                 >
-                  Read Full Article
+                  Read Article
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
