@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { BlogGrid } from "@/components/sections/blog-grid";
 import { BlogHero } from "@/components/sections/blog-hero";
-import { blogPosts } from "@/lib/site-data";
 
 export const metadata: Metadata = {
   title: "Blogs",
@@ -15,7 +14,7 @@ export default function BlogsPage() {
   return (
     <>
       <BlogHero />
-      <BlogGrid posts={blogPosts} />
+      <BlogGrid />
     </>
   );
 }
