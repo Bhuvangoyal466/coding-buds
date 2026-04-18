@@ -240,6 +240,86 @@ export const faqs: FaqItem[] = [
 
 export const blogPosts: BlogPost[] = [
   {
+  slug: "put-your-webpage-on-the-internet",
+  title: "Put Your Webpage on the Internet!",
+  category: "Web Development",
+  date: "2025-07-01",
+  readTime: "10 min read",
+  image: "/assets/images/web-development.webp",
+  imageAlt: "Kids publishing their first webpage live on the internet",
+  teaser:
+    "You already wrote the code. Now it's time to share it with the world! Follow five wizard steps to publish your project live on the internet using GitHub Pages — for free.",
+  excerpt:
+    "A step-by-step wizard tutorial for kids and teens to convert their Python code into a live webpage using GitHub Pages. No experience needed — just follow the magic!",
+  paragraphs: [
+    "Turn your Python code into a real live webpage that anyone in the world can visit.",
+    "Using GitHub Pages, publishing your first website is completely free and takes less than 20 minutes.",
+  ],
+  body: [
+    {
+      type: "paragraph",
+      text: "You have already written real Python code — that is amazing! Now it is time to do something even cooler: put your creation on the internet so anyone in the world can visit it.",
+    },
+    {
+      type: "heading",
+      text: "What You Will Need",
+    },
+    {
+      type: "list",
+      items: [
+        "A computer or laptop with internet",
+        "Your Python code from class",
+        "A parent's email address (for GitHub sign-up)",
+        "About 15–20 minutes of wizard time",
+      ],
+    },
+    {
+      type: "heading",
+      text: "Step 1: Create Your GitHub Account",
+    },
+    {
+      type: "paragraph",
+      text: "Think of GitHub as a giant library in the clouds. Your code is a book, and GitHub gives it a special shelf with your name on it. Go to github.com, click Sign up, and create your free account. Your username will become part of your webpage address — make it something you love!",
+    },
+    {
+      type: "heading",
+      text: "Step 2: Turn Your Code into a Webpage",
+    },
+    {
+      type: "paragraph",
+      text: "Visit code-webpage.vercel.app and paste your Python code into the dark box. Click Convert to HTML and copy all the HTML code that appears. The tool handles the hard work — you just need to copy the result.",
+    },
+    {
+      type: "heading",
+      text: "Step 3: Create Your Repository",
+    },
+    {
+      type: "paragraph",
+      text: "A repository is like a magical backpack just for your project. Back on GitHub, click Create repository, give it a name like my-project, make sure Public is selected, and click the green button to create it.",
+    },
+    {
+      type: "heading",
+      text: "Step 4: Add Your HTML Code",
+    },
+    {
+      type: "paragraph",
+      text: "Click creating a new file, name it exactly index.html, paste your HTML code into the editor, and click Commit changes. The file name must be spelled exactly right — index.html is the front door of your webpage.",
+    },
+    {
+      type: "heading",
+      text: "Step 5: Go Live on the Internet!",
+    },
+    {
+      type: "paragraph",
+      text: "Click Settings, scroll to Pages in the left menu, set the branch to main, and click Save. Wait one to two minutes, refresh the page, and you will see your live link. Click Visit site to see your project on the real internet!",
+    },
+    {
+      type: "callout",
+      text: "Your webpage address will look like yourusername.github.io/your-repo-name — share it with anyone and they can visit it from anywhere in the world!",
+    },
+  ],
+},
+  {
     slug: "scratch-programming-for-kids",
     title: "Getting Started with Scratch Programming for Kids",
     category: "Scratch Programming",
