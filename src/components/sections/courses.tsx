@@ -30,6 +30,7 @@ const courses = [
     ],
     parentNote: "Perfect for complete beginners aged 6–10",
     href: "#contact",
+    pageHref: "/courses/scratch",
   },
   {
     title: "Python for Teens",
@@ -53,6 +54,7 @@ const courses = [
     ],
     parentNote: "Great step up after Scratch, or as a first course for older kids",
     href: "#contact",
+    pageHref: "/courses/python",
   },
   {
     title: "Web Development",
@@ -76,6 +78,7 @@ const courses = [
     ],
     parentNote: "Ideal for creative kids who love design and visible results",
     href: "#contact",
+    pageHref: "/courses/web-dev",
   },
   {
     title: "Java Programming",
@@ -99,6 +102,7 @@ const courses = [
     ],
     parentNote: "Best for teens wanting a head start on school computer science",
     href: "#contact",
+    pageHref: "/courses/java",
   },
 ];
 
@@ -126,8 +130,8 @@ export function CoursesSection() {
               {/* Colour accent bar */}
               <div className={`h-1 w-full bg-gradient-to-r ${course.accent}`} />
 
-              {/* Image */}
-              <div className="relative h-48 overflow-hidden">
+              {/* Image — clicking it goes to the course page */}
+              <Link href={course.pageHref} className="relative h-48 overflow-hidden block">
                 <Image
                   src={course.image}
                   alt={course.imageAlt}
@@ -139,16 +143,18 @@ export function CoursesSection() {
                 <span className={`absolute left-3 top-3 rounded-full px-3 py-1 text-xs font-semibold shadow-sm ${course.badgeColor}`}>
                   {course.badge}
                 </span>
-              </div>
+              </Link>
 
               {/* Content */}
               <div className="flex flex-1 flex-col gap-4 p-5">
 
-                {/* Title + subtitle */}
+                {/* Title + subtitle — clicking goes to course page */}
                 <div>
-                  <h3 className="font-heading text-xl font-semibold leading-tight text-[#1B2D5B]">
-                    {course.title}
-                  </h3>
+                  <Link href={course.pageHref} className="group/title">
+                    <h3 className="font-heading text-xl font-semibold leading-tight text-[#1B2D5B] group-hover/title:underline underline-offset-2">
+                      {course.title}
+                    </h3>
+                  </Link>
                   <p
                     className="mt-1 text-xs font-semibold uppercase tracking-[0.16em]"
                     style={{ color: course.accentSolid }}
@@ -196,18 +202,37 @@ export function CoursesSection() {
                   💡 {course.parentNote}
                 </p>
 
-                {/* CTA */}
-                <Link
-                  href={course.href}
-                  className="mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-[#E8511A] px-5 py-3 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(232,81,26,0.22)] transition hover:bg-[#cf4514] hover:shadow-[0_8px_24px_rgba(232,81,26,0.32)]"
-                >
-                  Book a Free Trial
-                  <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
+                {/* CTAs */}
+                <div className="mt-auto flex gap-2">
+                  <Link
+                    href={course.href}
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-full bg-[#E8511A] px-4 py-3 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(232,81,26,0.22)] transition hover:bg-[#cf4514] hover:shadow-[0_8px_24px_rgba(232,81,26,0.32)]"
+                  >
+                    Book Trial
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                  <Link
+                    href={course.pageHref}
+                    className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-600 transition hover:border-slate-300 hover:bg-slate-50 hover:text-[#1B2D5B]"
+                  >
+                    Learn More
+                  </Link>
+                </div>
 
               </div>
             </motion.article>
           ))}
+        </div>
+
+        {/* ── VIEW ALL COURSES LINK ── */}
+        <div className="mt-10 text-center">
+          <Link
+            href="/courses"
+            className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-[#1B2D5B] shadow-sm transition hover:border-slate-300 hover:bg-slate-50 hover:shadow-md"
+          >
+            View All Courses
+            <ArrowRight className="h-4 w-4 text-[#E8511A]" />
+          </Link>
         </div>
 
         {/* ── TRUST BAR ── */}
