@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Mail, MessageCircle, Send } from "lucide-react";
 import { useState } from "react";
 import { siteConfig } from "@/lib/site-data";
-import { FaInstagram, FaLinkedin, FaFacebook } from "react-icons/fa";
+import { FaInstagram, FaLinkedin, FaFacebook, FaWhatsapp } from "react-icons/fa";
 
 export function Footer() {
   const [email, setEmail] = useState("");
@@ -111,6 +111,9 @@ export function Footer() {
               </form>
               {message ? <p className="mt-3 text-sm text-[#FFD600]">{message}</p> : null}
               <div className="mt-6 flex gap-3">
+                <a href={siteConfig.whatsappHref} target="_blank" rel="noreferrer" className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/5 text-white/80 transition hover:-translate-y-1 hover:text-white">
+                  <FaWhatsapp className="h-4 w-4" aria-hidden="true" />
+                </a>
                 <a href={siteConfig.facebook} className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-white/5 text-white/80 transition hover:-translate-y-1 hover:text-white">
                   <span className="text-sm font-semibold uppercase tracking-[0.18em]"><FaFacebook className="h-4 w-4" aria-hidden="true" /></span>
                 </a>
