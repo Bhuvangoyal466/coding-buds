@@ -57,7 +57,14 @@ export function ContactSection() {
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
     const form = event.currentTarget;
+  
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+  
     setSubmitting(true);
     setStatus({ type: "idle", message: "" });
 
@@ -265,7 +272,15 @@ export function ContactSection() {
                   name="phone"
                   type="tel"
                   required
+                  inputMode="numeric"
+                  pattern="[0-9]{7,15}"
+                  minLength={7}
+                  maxLength={15}
+                  title="Please enter a valid phone number (7-15 digits)"
                   placeholder="Phone number"
+                  onInput={(e) => {
+                    e.currentTarget.value = e.currentTarget.value.replace(/\D/g, "");
+                  }}
                   className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-[#E8511A]"
                 />
               </div>
