@@ -219,7 +219,7 @@ export function ContactSection() {
                   required
                   minLength={2}
                   onBlur={handleRequiredTextInputBlur}
-                  onInput={handleRequiredTextInputChange}
+                  onChange={handleRequiredTextInputChange}
                   className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-[#E8511A]"
                 />
               </label>
@@ -231,7 +231,7 @@ export function ContactSection() {
                   required
                   autoComplete="email"
                   onBlur={handleRequiredTextInputBlur}
-                  onInput={handleRequiredTextInputChange}
+                  onChange={handleRequiredTextInputChange}
                   className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-[#E8511A]"
                 />
               </label>
@@ -359,7 +359,7 @@ export function ContactSection() {
                 required
                 minLength={10}
                 onBlur={handleRequiredTextInputBlur}
-                onInput={handleRequiredTextInputChange}
+                onChange={handleRequiredTextInputChange}
                 placeholder="Ask your query..."
                 className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-[#E8511A]"
               />
