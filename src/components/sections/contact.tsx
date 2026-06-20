@@ -55,33 +55,90 @@ export function ContactSection() {
     });
   }, [search]);
 
+  function handleRequiredTextInputBlur(event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    const value = event.currentTarget.value.trim();
+    event.currentTarget.value = value;
+    event.currentTarget.setCustomValidity(value ? "" : "This field is required.");
+  }
+
+  function handleRequiredTextInputChange(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    const value = event.currentTarget.value;
+    event.currentTarget.setCustomValidity(value.trim() ? "" : "This field is required.");
+  }
+
+  function validateForm(form: HTMLFormElement) {
+    type ValidatableElement = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+    type ValidatableField = {
+      element: ValidatableElement;
+      label: string;
+    };
+
+    const requiredFields: Array<{ name: string; label: string }> = [
+      { name: "name", label: "Your name" },
+      { name: "email", label: "Your email" },
+      { name: "child_age", label: "Child's age" },
+      { name: "course_interest", label: "Course interest" },
+      { name: "phone", label: "Phone number" },
+      { name: "message", label: "Your message" },
+    ];
+
+    const elements: ValidatableField[] = [];
+
+    for (const field of requiredFields) {
+      const element = form.elements.namedItem(field.name);
+
+      if (element instanceof HTMLInputElement || element instanceof HTMLSelectElement || element instanceof HTMLTextAreaElement) {
+        elements.push({ element, label: field.label });
+      }
+    }
+
+    elements.forEach(({ element }) => element.setCustomValidity(""));
+
+    for (const { element, label } of elements) {
+      const value = element.value.trim();
+
+      if (!value) {
+        element.setCustomValidity(`${label} is required.`);
+        element.reportValidity();
+        return false;
+      }
+    }
+
+    return form.checkValidity();
+  }
+
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const form = event.currentTarget;
-  
-    if (!form.checkValidity()) {
+
+    if (!validateForm(form)) {
       form.reportValidity();
       return;
     }
-  
+
     setSubmitting(true);
     setStatus({ type: "idle", message: "" });
 
     try {
       const formData = new FormData(form);
+      const name = String(formData.get("name") || "").trim();
+      const email = String(formData.get("email") || "").trim();
+      const childAge = String(formData.get("child_age") || "").trim();
+      const courseInterest = String(formData.get("course_interest") || "").trim();
       const phone = `${selectedCountry.dialCode} ${String(formData.get("phone") || "").trim()}`.trim();
+      const message = String(formData.get("message") || "").trim();
 
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         {
-          name: String(formData.get("name") || ""),
-          email: String(formData.get("email") || ""),
+          name,
+          email,
           phone,
-          child_age: String(formData.get("child_age") || ""),
-          course_interest: String(formData.get("course_interest") || ""),
-          message: String(formData.get("message") || ""),
+          child_age: childAge,
+          course_interest: courseInterest,
+          message,
           country: `${selectedCountry.name} (${selectedCountry.dialCode})`,
         },
         {
@@ -160,6 +217,9 @@ export function ContactSection() {
                   name="name"
                   type="text"
                   required
+                  minLength={2}
+                  onBlur={handleRequiredTextInputBlur}
+                  onInput={handleRequiredTextInputChange}
                   className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-[#E8511A]"
                 />
               </label>
@@ -169,6 +229,9 @@ export function ContactSection() {
                   name="email"
                   type="email"
                   required
+                  autoComplete="email"
+                  onBlur={handleRequiredTextInputBlur}
+                  onInput={handleRequiredTextInputChange}
                   className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-[#E8511A]"
                 />
               </label>
@@ -183,6 +246,7 @@ export function ContactSection() {
                   min={1}
                   max={18}
                   required
+                  inputMode="numeric"
                   className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-[#E8511A]"
                 />
               </label>
@@ -278,6 +342,7 @@ export function ContactSection() {
                   maxLength={15}
                   title="Please enter a valid phone number (7-15 digits)"
                   placeholder="Phone number"
+                  autoComplete="tel"
                   onInput={(e) => {
                     e.currentTarget.value = e.currentTarget.value.replace(/\D/g, "");
                   }}
@@ -291,6 +356,10 @@ export function ContactSection() {
               <textarea
                 name="message"
                 rows={4}
+                required
+                minLength={10}
+                onBlur={handleRequiredTextInputBlur}
+                onInput={handleRequiredTextInputChange}
                 placeholder="Ask your query..."
                 className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none transition focus:border-[#E8511A]"
               />
